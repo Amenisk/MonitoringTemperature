@@ -50,8 +50,9 @@ namespace MonitoringTemperature
             this.NormTemp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeviationFromNorm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlReport = new System.Windows.Forms.Panel();
-            this.tbReportName = new System.Windows.Forms.TextBox();
             this.tbReport = new System.Windows.Forms.TextBox();
+            this.tbReportName = new System.Windows.Forms.TextBox();
+            this.btnLoadTemp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             this.pnlReport.SuspendLayout();
             this.SuspendLayout();
@@ -194,7 +195,7 @@ namespace MonitoringTemperature
             this.dgvReport.Location = new System.Drawing.Point(0, 73);
             this.dgvReport.Name = "dgvReport";
             this.dgvReport.RowTemplate.Height = 25;
-            this.dgvReport.Size = new System.Drawing.Size(445, 80);
+            this.dgvReport.Size = new System.Drawing.Size(445, 320);
             this.dgvReport.TabIndex = 15;
             this.dgvReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -228,6 +229,14 @@ namespace MonitoringTemperature
             this.pnlReport.Size = new System.Drawing.Size(445, 393);
             this.pnlReport.TabIndex = 16;
             // 
+            // tbReport
+            // 
+            this.tbReport.Location = new System.Drawing.Point(0, 35);
+            this.tbReport.Multiline = true;
+            this.tbReport.Name = "tbReport";
+            this.tbReport.Size = new System.Drawing.Size(445, 40);
+            this.tbReport.TabIndex = 17;
+            // 
             // tbReportName
             // 
             this.tbReportName.BackColor = System.Drawing.Color.White;
@@ -239,19 +248,22 @@ namespace MonitoringTemperature
             this.tbReportName.TabIndex = 16;
             this.tbReportName.Text = "Отчет";
             // 
-            // tbReport
+            // btnLoadTemp
             // 
-            this.tbReport.Location = new System.Drawing.Point(0, 35);
-            this.tbReport.Multiline = true;
-            this.tbReport.Name = "tbReport";
-            this.tbReport.Size = new System.Drawing.Size(445, 40);
-            this.tbReport.TabIndex = 17;
+            this.btnLoadTemp.Location = new System.Drawing.Point(225, 275);
+            this.btnLoadTemp.Name = "btnLoadTemp";
+            this.btnLoadTemp.Size = new System.Drawing.Size(158, 28);
+            this.btnLoadTemp.TabIndex = 17;
+            this.btnLoadTemp.Text = "Загрузить температуру";
+            this.btnLoadTemp.UseVisualStyleBackColor = true;
+            this.btnLoadTemp.Click += new System.EventHandler(this.btnLoadTemp_Click);
             // 
             // frmMonitoringTemperature
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 527);
+            this.Controls.Add(this.btnLoadTemp);
             this.Controls.Add(this.pnlReport);
             this.Controls.Add(this.btnGenerateReport);
             this.Controls.Add(this.tbTempListName);
@@ -304,6 +316,7 @@ namespace MonitoringTemperature
         private System.Windows.Forms.Panel pnlReport;
         private System.Windows.Forms.TextBox tbReport;
         private System.Windows.Forms.TextBox tbReportName;
+        private System.Windows.Forms.Button btnLoadTemp;
     }
 }
 

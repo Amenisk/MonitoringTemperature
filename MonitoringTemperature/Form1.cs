@@ -10,12 +10,26 @@ using System.Windows.Forms;
 
 namespace MonitoringTemperature
 {
-    public partial class Form1 : Form
+    public partial class frmMonitoringTemperature : Form
     {
-        public Form1()
+        public frmMonitoringTemperature()
         {
             InitializeComponent();
         }
 
+        private void tbTemperatureName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbTimeName_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

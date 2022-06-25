@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Ziyatdinov Kamil 220 group "Monitoring temperature" 25.06.2022
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -77,6 +79,8 @@ namespace MonitoringTemperature
 
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
+            tbReport.Text = null;
+
             if (tbKindOfFish.Text != "" && ((tbMaxTemp.Text != "" && tbMaxTempTime.Text != "") 
                 || (tbMinTemp.Text != "" && tbMinTempTime.Text != "")) && tbDateTime.Text != ""
                 && tbTempList.Text != "")
@@ -122,11 +126,17 @@ namespace MonitoringTemperature
 
                         if (minTime > minTempTime)
                         {
-                            tbReport.Text += $"Порог минимальной температуры превышен на {maxTime} минут";
+                            tbReport.Text += $"Порог минимальной температуры превышен на {minTime} минут";
 
                             ReportFilling(temps, minTemp, time, false, maxTime / 10);
                         }
                     } 
+                    else
+                    {
+                        MessageBox.Show("Min temperature more than max temperature!", "Error!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                
                 }
                 catch
                 {
@@ -184,6 +194,51 @@ namespace MonitoringTemperature
             dgvReport.Rows[count].Cells[1].Value = temp;
             dgvReport.Rows[count].Cells[2].Value = normTemp;
             dgvReport.Rows[count].Cells[3].Value = temp - normTemp;
+        }
+
+        private void btnSaveReport_Click(object sender, EventArgs e)
+        {
+           if (dgvReport.Rows[0].Cells[0].Value != null)
+           {
+                SaveFileDialog save = new SaveFileDialog();
+
+                save.Filter = "txt files (*.txt)|*.txt";
+                save.FilterIndex = 2;
+                save.RestoreDirectory = true;
+
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    SaveReport(save.FileName);
+
+                    MessageBox.Show("File saved", "Success!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Report not filled!", "Success!",
+                       MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void SaveReport(string path)
+        {
+            using (var writer = new StreamWriter(path))
+            {
+                writer.WriteLine(tbReport.Text);
+                writer.WriteLine("Время                Факт Норма Отклонение от нормы");
+
+                for (int i = 0; i < dgvReport.RowCount; ++i)
+                {
+                    writer.WriteLine(StringFormatting(i));
+                }
+            }
+        }
+
+        private string StringFormatting(int i)
+        {
+            return $"{dgvReport.Rows[i].Cells[0].Value}   {dgvReport.Rows[i].Cells[1].Value}   " +
+                $"{dgvReport.Rows[i].Cells[2].Value}     {dgvReport.Rows[i].Cells[3].Value}";
         }
     }
    

@@ -45,14 +45,15 @@ namespace MonitoringTemperature
             this.tbTempList = new System.Windows.Forms.TextBox();
             this.btnGenerateReport = new System.Windows.Forms.Button();
             this.dgvReport = new System.Windows.Forms.DataGridView();
-            this.pnlReport = new System.Windows.Forms.Panel();
-            this.tbReport = new System.Windows.Forms.TextBox();
-            this.tbReportName = new System.Windows.Forms.TextBox();
-            this.btnLoadTemp = new System.Windows.Forms.Button();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FactTemp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NormTemp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeviationFromNorm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlReport = new System.Windows.Forms.Panel();
+            this.tbReport = new System.Windows.Forms.TextBox();
+            this.tbReportName = new System.Windows.Forms.TextBox();
+            this.btnLoadTemp = new System.Windows.Forms.Button();
+            this.btnSaveReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             this.pnlReport.SuspendLayout();
             this.SuspendLayout();
@@ -178,7 +179,7 @@ namespace MonitoringTemperature
             // 
             this.btnGenerateReport.Location = new System.Drawing.Point(33, 275);
             this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.Size = new System.Drawing.Size(163, 28);
+            this.btnGenerateReport.Size = new System.Drawing.Size(151, 28);
             this.btnGenerateReport.TabIndex = 14;
             this.btnGenerateReport.Text = "Сформировать отчет";
             this.btnGenerateReport.UseVisualStyleBackColor = true;
@@ -198,6 +199,27 @@ namespace MonitoringTemperature
             this.dgvReport.Size = new System.Drawing.Size(445, 320);
             this.dgvReport.TabIndex = 15;
             this.dgvReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Time
+            // 
+            this.Time.HeaderText = "Время";
+            this.Time.Name = "Time";
+            this.Time.Width = 120;
+            // 
+            // FactTemp
+            // 
+            this.FactTemp.HeaderText = "Факт";
+            this.FactTemp.Name = "FactTemp";
+            // 
+            // NormTemp
+            // 
+            this.NormTemp.HeaderText = "Норма";
+            this.NormTemp.Name = "NormTemp";
+            // 
+            // DeviationFromNorm
+            // 
+            this.DeviationFromNorm.HeaderText = "Отклонение от нормы";
+            this.DeviationFromNorm.Name = "DeviationFromNorm";
             // 
             // pnlReport
             // 
@@ -230,7 +252,7 @@ namespace MonitoringTemperature
             // 
             // btnLoadTemp
             // 
-            this.btnLoadTemp.Location = new System.Drawing.Point(225, 275);
+            this.btnLoadTemp.Location = new System.Drawing.Point(207, 275);
             this.btnLoadTemp.Name = "btnLoadTemp";
             this.btnLoadTemp.Size = new System.Drawing.Size(158, 28);
             this.btnLoadTemp.TabIndex = 17;
@@ -238,32 +260,22 @@ namespace MonitoringTemperature
             this.btnLoadTemp.UseVisualStyleBackColor = true;
             this.btnLoadTemp.Click += new System.EventHandler(this.btnLoadTemp_Click);
             // 
-            // Time
+            // btnSaveReport
             // 
-            this.Time.HeaderText = "Время";
-            this.Time.Name = "Time";
-            this.Time.Width = 120;
-            // 
-            // FactTemp
-            // 
-            this.FactTemp.HeaderText = "Факт";
-            this.FactTemp.Name = "FactTemp";
-            // 
-            // NormTemp
-            // 
-            this.NormTemp.HeaderText = "Норма";
-            this.NormTemp.Name = "NormTemp";
-            // 
-            // DeviationFromNorm
-            // 
-            this.DeviationFromNorm.HeaderText = "Отклонение от нормы";
-            this.DeviationFromNorm.Name = "DeviationFromNorm";
+            this.btnSaveReport.Location = new System.Drawing.Point(390, 275);
+            this.btnSaveReport.Name = "btnSaveReport";
+            this.btnSaveReport.Size = new System.Drawing.Size(119, 28);
+            this.btnSaveReport.TabIndex = 18;
+            this.btnSaveReport.Text = "Сохранить отчет";
+            this.btnSaveReport.UseVisualStyleBackColor = true;
+            this.btnSaveReport.Click += new System.EventHandler(this.btnSaveReport_Click);
             // 
             // frmMonitoringTemperature
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 527);
+            this.Controls.Add(this.btnSaveReport);
             this.Controls.Add(this.btnLoadTemp);
             this.Controls.Add(this.pnlReport);
             this.Controls.Add(this.btnGenerateReport);
@@ -318,6 +330,7 @@ namespace MonitoringTemperature
         private System.Windows.Forms.DataGridViewTextBoxColumn FactTemp;
         private System.Windows.Forms.DataGridViewTextBoxColumn NormTemp;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviationFromNorm;
+        private System.Windows.Forms.Button btnSaveReport;
     }
 }
 

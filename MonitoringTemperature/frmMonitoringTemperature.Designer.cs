@@ -43,6 +43,17 @@ namespace MonitoringTemperature
             this.tbDateTime = new System.Windows.Forms.TextBox();
             this.tbTempListName = new System.Windows.Forms.TextBox();
             this.tbTempList = new System.Windows.Forms.TextBox();
+            this.btnGenerateReport = new System.Windows.Forms.Button();
+            this.dgvReport = new System.Windows.Forms.DataGridView();
+            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FactTemp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NormTemp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeviationFromNorm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlReport = new System.Windows.Forms.Panel();
+            this.tbReportName = new System.Windows.Forms.TextBox();
+            this.tbReport = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
+            this.pnlReport.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbFish
@@ -162,11 +173,87 @@ namespace MonitoringTemperature
             this.tbTempList.Size = new System.Drawing.Size(362, 51);
             this.tbTempList.TabIndex = 12;
             // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.Location = new System.Drawing.Point(33, 275);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(163, 28);
+            this.btnGenerateReport.TabIndex = 14;
+            this.btnGenerateReport.Text = "Сформировать отчет";
+            this.btnGenerateReport.UseVisualStyleBackColor = true;
+            this.btnGenerateReport.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dgvReport
+            // 
+            this.dgvReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Time,
+            this.FactTemp,
+            this.NormTemp,
+            this.DeviationFromNorm});
+            this.dgvReport.Location = new System.Drawing.Point(0, 73);
+            this.dgvReport.Name = "dgvReport";
+            this.dgvReport.RowTemplate.Height = 25;
+            this.dgvReport.Size = new System.Drawing.Size(445, 80);
+            this.dgvReport.TabIndex = 15;
+            this.dgvReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Time
+            // 
+            this.Time.HeaderText = "Время";
+            this.Time.Name = "Time";
+            // 
+            // FactTemp
+            // 
+            this.FactTemp.HeaderText = "Факт";
+            this.FactTemp.Name = "FactTemp";
+            // 
+            // NormTemp
+            // 
+            this.NormTemp.HeaderText = "Норма";
+            this.NormTemp.Name = "NormTemp";
+            // 
+            // DeviationFromNorm
+            // 
+            this.DeviationFromNorm.HeaderText = "Отклонение от нормы";
+            this.DeviationFromNorm.Name = "DeviationFromNorm";
+            // 
+            // pnlReport
+            // 
+            this.pnlReport.Controls.Add(this.tbReport);
+            this.pnlReport.Controls.Add(this.tbReportName);
+            this.pnlReport.Controls.Add(this.dgvReport);
+            this.pnlReport.Location = new System.Drawing.Point(552, 22);
+            this.pnlReport.Name = "pnlReport";
+            this.pnlReport.Size = new System.Drawing.Size(445, 393);
+            this.pnlReport.TabIndex = 16;
+            // 
+            // tbReportName
+            // 
+            this.tbReportName.BackColor = System.Drawing.Color.White;
+            this.tbReportName.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbReportName.Location = new System.Drawing.Point(0, 0);
+            this.tbReportName.Name = "tbReportName";
+            this.tbReportName.ReadOnly = true;
+            this.tbReportName.Size = new System.Drawing.Size(445, 39);
+            this.tbReportName.TabIndex = 16;
+            this.tbReportName.Text = "Отчет";
+            // 
+            // tbReport
+            // 
+            this.tbReport.Location = new System.Drawing.Point(0, 35);
+            this.tbReport.Multiline = true;
+            this.tbReport.Name = "tbReport";
+            this.tbReport.Size = new System.Drawing.Size(445, 40);
+            this.tbReport.TabIndex = 17;
+            // 
             // frmMonitoringTemperature
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 450);
+            this.ClientSize = new System.Drawing.Size(1009, 527);
+            this.Controls.Add(this.pnlReport);
+            this.Controls.Add(this.btnGenerateReport);
             this.Controls.Add(this.tbTempListName);
             this.Controls.Add(this.tbTempList);
             this.Controls.Add(this.tbDateTimeName);
@@ -184,6 +271,9 @@ namespace MonitoringTemperature
             this.Name = "frmMonitoringTemperature";
             this.Text = "Monitoring temperature app";
             this.Load += new System.EventHandler(this.tbTimeName_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).EndInit();
+            this.pnlReport.ResumeLayout(false);
+            this.pnlReport.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,6 +295,15 @@ namespace MonitoringTemperature
         private System.Windows.Forms.TextBox tbDateTime;
         private System.Windows.Forms.TextBox tbTempListName;
         private System.Windows.Forms.TextBox tbTempList;
+        private System.Windows.Forms.Button btnGenerateReport;
+        private System.Windows.Forms.DataGridView dgvReport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FactTemp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NormTemp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeviationFromNorm;
+        private System.Windows.Forms.Panel pnlReport;
+        private System.Windows.Forms.TextBox tbReport;
+        private System.Windows.Forms.TextBox tbReportName;
     }
 }
 
